@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>My notes</h2>
+  {% if not page_obj %}
+    <p>Not notes</p>
+  {% else %}
+    {% for resourse in page_obj %}
+      <div>
+        <p>IP address: {{ resourse.ip_address }}</p>
+        <p>Port: {{ resourse.port }}</p>
+        <p>Resourse type: {{ resourse.resourse_type }}</p>
+        <p>Host user: {{ resourse.host_user }}</p>
+        <p>Date of change: {{ resourse.change_datetime|date:'Y-m-d H-i' }}</p>
+        <a href={% url 'resourses:resourse_edit' resourse.id %}>edit note</a>
+        <hr>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endblock  %}

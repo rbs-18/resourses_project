@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+  {% if request.user.is_authenticated %}
+    <li>
+      <a href={% url 'resourses:resourse_create' %}>New resourse</a>
+    </li>
+    <li>
+      <a href={% url 'users:logout' %}>Log out</a>
+    </li>
+    <li>
+      Пользователь: {{ user.username }}
+    </li>
+  {% else %}
+    <li>
+      <a href={% url 'users:login' %}>Login</a>
+    </li>
+    <li>
+      <a href={% url 'users:signup' %}>Sign Up</a>
+    </li>
+  {% endif %}
+  </ul>
+</nav>
